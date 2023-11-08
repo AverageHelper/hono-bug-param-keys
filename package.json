@@ -1,21 +1,18 @@
 {
-	"name": "NODE_PROJECT_TEMPLATE",
+	"name": "hono-bug-param-keys",
 	"version": "1.0.0",
-	"description": "Boilerplate for a NodeJS project in strict TypeScript.",
+	"description": "Attempting to reproduce a bug where the context would return a function instead of a string when given a path param with the value \"keys\".",
 	"scripts": {
-		"prebuild": "npm run export-version && npm run lint",
-		"build": "./node_modules/.bin/tsc -p tsconfig.prod.json",
-		"build:clean": "rm -rf lib && npm run build",
-		"start": "./node_modules/.bin/nodemon --inspect .",
-		"test": "./node_modules/.bin/vitest run",
-		"test:watch": "./node_modules/.bin/vitest watch --coverage=false",
-		"export-version": "./node_modules/.bin/genversion ./src/version.ts -es",
+		"prebuild": "npm run lint",
+		"build": "rm -rf lib && ./node_modules/.bin/tsc -p tsconfig.prod.json",
+		"start": "node .",
+		"test": "./node_modules/.bin/vitest",
 		"lint": "./node_modules/.bin/eslint . --ext .ts",
 		"lint:fix": "./node_modules/.bin/eslint . --ext .ts --fix"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/AverageHelper/NODE_PROJECT_TEMPLATE.git"
+		"url": "git+https://github.com/AverageHelper/hono-bug-param-keys.git"
 	},
 	"keywords": [
 		"node"
@@ -23,9 +20,9 @@
 	"author": "Average Helper",
 	"license": "GPL-3.0",
 	"bugs": {
-		"url": "https://github.com/AverageHelper/NODE_PROJECT_TEMPLATE/issues"
+		"url": "https://github.com/AverageHelper/hono-bug-param-keys/issues"
 	},
-	"homepage": "https://github.com/AverageHelper/NODE_PROJECT_TEMPLATE#readme",
+	"homepage": "https://github.com/AverageHelper/hono-bug-param-keys#readme",
 	"type": "module",
 	"main": "./lib/main.js",
 	"files": [
@@ -35,11 +32,10 @@
 		"node": "^18.17.0"
 	},
 	"dependencies": {
-		"source-map-support": "0.5.21"
+		"hono": "3.9.2"
 	},
 	"devDependencies": {
 		"@types/node": "18.17.11",
-		"@types/source-map-support": "0.5.7",
 		"@typescript-eslint/eslint-plugin": "6.4.1",
 		"@typescript-eslint/parser": "6.4.1",
 		"@vitest/coverage-istanbul": "0.34.3",
@@ -55,10 +51,9 @@
 		"eslint-plugin-unicorn": "48.0.1",
 		"eslint-plugin-vitest": "0.2.8",
 		"genversion": "3.1.1",
-		"jest-extended": "4.0.1",
-		"nodemon": "3.0.1",
 		"prettier": "3.0.2",
 		"typescript": "4.9.5",
+		"undici-types": "5.27.2",
 		"vitest": "0.34.3"
 	}
 }
