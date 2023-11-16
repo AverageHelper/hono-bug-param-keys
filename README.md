@@ -2,6 +2,8 @@
 
 Minimal reproduction of a Hono bug where a param value of `"keys"` sometimes gets resolved as `Array.prototype.keys` instead of the string value `"keys"`.
 
+Relevant issue: [honojs/hono#1713](https://github.com/honojs/hono/issues/1713)
+
 ## Using this repository
 
 Install dependencies
