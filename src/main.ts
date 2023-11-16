@@ -1,10 +1,16 @@
 import { Hono } from "hono";
 
-const route = new Hono().get("/users/:uid/:collectionId/:documentId", c => {
-	const p = c.req.param("collectionId");
-	return c.json([typeof p, p.toString()]);
+export const app = new Hono();
+
+// Adapted from Hono's own hono.test.ts, 'Routing' -> 'Nested route' test:
+
+const book = app.basePath("/book");
+book.get("/:id", c => {
+	return c.text(`get /book/${c.req.param("id")}`);
 });
 
-export const app = new Hono() //
-	.basePath("/api")
-	.route("/v0/db", route);
+const user = app.basePath("/user");
+user.get("/login", c => c.text("get /user/login"));
+
+const appForEachUser = user.basePath(":id");
+appForEachUser.get("/profile", c => c.text(`get /user/${c.req.param("id")}/profile`));
